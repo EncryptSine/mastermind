@@ -2,8 +2,8 @@ import tkinter as tk
 
 window = tk.Tk()
 
-WINDOW_HEIGHT = 720
-WINDOW_WIDTH = 480
+WINDOW_HEIGHT = 920
+WINDOW_WIDTH = 720
 
 # get the screen dimension
 screen_width = window.winfo_screenwidth()
@@ -16,27 +16,25 @@ center_y = int(screen_height / 2 - WINDOW_HEIGHT / 2)
 window.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}+{center_x}+{center_y}")
 window.title("Mastermind")
 
-photo = tk.PhotoImage(file="..\\img\\logo.png")
+photo = tk.PhotoImage(file="P:\\NSI\\python\\mastermind\\mastermind\\img\\logo.png")
 window.iconphoto(False, photo)
 
-window['background'] = '#6D6D6D'
+window['background'] = '#f0f0f0'
 
 window.resizable(False, False)
 
-myCanvas = tk.Canvas(window)
-myCanvas.pack()
+absolute_path = "P:\\NSI\\python\\mastermind\\mastermind\\img\\"
 
+img_path = [absolute_path + 'vert.png', absolute_path + 'bleu.png',absolute_path + 'orange.png',absolute_path + 'gris.png',absolute_path + 'rouge.png',absolute_path + 'violet.png', absolute_path + 'blanc.png', absolute_path + 'jaune.png', absolute_path + "button_delet.png"]
+image_list = [tk.PhotoImage(file=x) for x in img_path]
 
-def create_circle(x, y, r, canvas):  # center coordinates, radius
-    x0 = x - r
-    y0 = y - r
-    x1 = x + r
-    y1 = y + r
-    canvas.configure(bg="#6D6D6D")
-    #faut set la size du canva sinon il est trop gros + son fond et sa bordure (set la size du canva dans cette fonction en fonction de la taille du cercle)
-    return canvas.create_oval(x0, y0, x1, y1, fill="#FF0000")
+i = 0
+for item in image_list: # Number of rows
+    for j in range(1): # Number of columns
+        lbl = tk.Label(window,image=image_list[i])
+        lbl.config
+        lbl.grid(row=i,column=j)
+    i += 1
 
-
-create_circle(100, 100, 20, myCanvas)
 
 window.mainloop()
