@@ -1,4 +1,4 @@
 # mastermind
 
-Module needed :  Cancel changes
+Module needed :
 -Tkinter (*installed by default on python*)
