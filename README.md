@@ -1,5 +1,4 @@
 # mastermind
 
-Module needed :  
--Pathlib (*pip install pathlib*)  
+Module needed :  Cancel changes
 -Tkinter (*installed by default on python*)

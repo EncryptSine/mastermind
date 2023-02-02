@@ -1,11 +1,13 @@
-import tkinter as tk
+from tkinter import *
 import os
 
-window = tk.Tk()
+window = Tk()
 
-WINDOW_HEIGHT = 920
-WINDOW_WIDTH = 720
+WINDOW_HEIGHT = 900
+WINDOW_WIDTH = 700
 ABSOLUTE_PATH = fr"{os.path.dirname(__file__)}/../img/"
+
+print(ABSOLUTE_PATH)
 
 # get the screen dimension
 screen_width = window.winfo_screenwidth()
@@ -18,45 +20,96 @@ center_y = int(screen_height / 2 - WINDOW_HEIGHT / 2)
 window.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}+{center_x}+{center_y}")
 window.title("Mastermind")
 
-photo = tk.PhotoImage(file=ABSOLUTE_PATH + "logo.png")
+photo = PhotoImage(file=ABSOLUTE_PATH + "logo.png")
 window.iconphoto(False, photo)
 
-window['background'] = '#f0f0f0'
+window['background'] = '#b97a57'
 
 window.resizable(False, False)
 
+bg_image=PhotoImage(file=ABSOLUTE_PATH + "bg.png")
+bg_label = Label(image=bg_image)
+bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-def set_color(button):
-    print(button)
-
-
-button_dico = {"vert": "button0",
-               "bleu": "button1",
-               "orange": "button2",
-               "gris": "button3",
-               "rouge": "button4",
-               "violet": "button5",
-               "blanc": "button6",
-               "jaune": "button7"}
+nb_tentative = 0
+nb_color_in_line = 0
 
 
-GO FAIRE TOUT LES BUTTONS UN A UN CAR C GALERE JE SUIS PAS UN PRO DE LA POO PYTHON
+# color = #be834f
 
-image_list = [tk.PhotoImage(file=ABSOLUTE_PATH + x + ".png") for x in button_dico]
+nb_color_in_line = 0
 
-high = 0
-j = 0
-# GROS MANQUE D'OPTIMISATION MAIS CA MARCHE
-for item in image_list:
-    for j in range(1):  # Number of columns
-        button = tk.Button(window, image=item)
-        button.place(x=650, y=high)
-        for key in button_dico:
-            if button_dico[key] == "button" + str(j):
-                button_dico[key] = button
-            j += 1
-    high += 70
+list_actual_color = []
 
-print(button_dico)
+def set_color(color):
+    if(color == "vert"):
+        actual_color = Label(window, image = img_vert, bg="red", highlightthickness = 0, bd = 0)
+        actual_color.place(x=0, y=71*nb_tentative)
+        list_actual_color.append(actual_color)
+    if(color == "bleu"):
+        actual_color = Label(window, image = img_bleu, bg="red", highlightthickness = 0, bd = 0)
+        actual_color.place(x=0, y=71*nb_tentative)
+        list_actual_color.append(actual_color)
+    if(color == "orange"):
+        actual_color = Label(window, image = img_orange, bg="red", highlightthickness = 0, bd = 0)
+        actual_color.place(x=0, y=71*nb_tentative)
+        list_actual_color.append(actual_color)
+    if(color == "gris"):
+        actual_color = Label(window, image = img_gris, bg="red", highlightthickness = 0, bd = 0)
+        actual_color.place(x=0, y=71*nb_tentative)
+        list_actual_color.append(actual_color)
+    if(color == "rouge"):
+        actual_color = Label(window, image = img_rouge, bg="red", highlightthickness = 0, bd = 0)
+        actual_color.place(x=0, y=71*nb_tentative)
+        list_actual_color.append(actual_color)
+    if(color == "violet"):
+        actual_color = Label(window, image = img_violet, bg="red", highlightthickness = 0, bd = 0)
+        actual_color.place(x=0, y=71*nb_tentative)
+        list_actual_color.append(actual_color)
+    if(color == "blanc"):
+        actual_color = Label(window, image = img_blanc, bg="red", highlightthickness = 0, bd = 0)
+        actual_color.place(x=0, y=71*nb_tentative)
+        list_actual_color.append(actual_color)
+    if(color == "jaune"):
+        actual_color = Label(window, image = img_jaune, bg="red", highlightthickness = 0, bd = 0)
+        actual_color.place(x=0, y=71*nb_tentative)
+        list_actual_color.append(actual_color)
+    if(color == "del"):
+        for element in list_actual_color:
+            element.after(element.destroy())
+            list_actual_color.clear()
+    print(list_actual_color)
+
+
+
+img_vert = PhotoImage(file=ABSOLUTE_PATH + "vert.png")
+img_bleu = PhotoImage(file=ABSOLUTE_PATH + "bleu.png")
+img_orange = PhotoImage(file=ABSOLUTE_PATH + "orange.png")
+img_gris= PhotoImage(file=ABSOLUTE_PATH + "gris.png")
+img_rouge = PhotoImage(file=ABSOLUTE_PATH + "rouge.png")
+img_violet = PhotoImage(file=ABSOLUTE_PATH + "violet.png")
+img_blanc = PhotoImage(file=ABSOLUTE_PATH + "blanc.png")
+img_jaune = PhotoImage(file=ABSOLUTE_PATH + "jaune.png")
+img_del = PhotoImage(file=ABSOLUTE_PATH + "button_delet.png")
+
+button_vert = Button(window, image=img_vert, bg="#b97a57", activebackground="#b97a57",highlightthickness = 0, bd = 0, command=lambda : set_color("vert"))
+button_bleu = Button(window, image=img_bleu, bg="#b97a57", activebackground="#b97a57",highlightthickness = 0, bd = 0, command=lambda : set_color("bleu"))
+button_orange = Button(window, image=img_orange, bg="#b97a57", activebackground="#b97a57",highlightthickness = 0, bd = 0, command=lambda : set_color("orange"))
+button_gris = Button(window, image=img_gris, bg="#b97a57", activebackground="#b97a57",highlightthickness = 0, bd = 0, command=lambda : set_color("gris"))
+button_rouge = Button(window, image=img_rouge, bg="#b97a57", activebackground="#b97a57",highlightthickness = 0, bd = 0, command=lambda : set_color("rouge"))
+button_violet = Button(window, image=img_violet, bg="#b97a57", activebackground="#b97a57",highlightthickness = 0, bd = 0, command=lambda : set_color("violet"))
+button_blanc = Button(window, image=img_blanc, bg="#b97a57", activebackground="#b97a57",highlightthickness = 0, bd = 0, command=lambda : set_color("blanc"))
+button_jaune = Button(window, image=img_jaune, bg="#b97a57", activebackground="#b97a57",highlightthickness = 0, bd = 0, command=lambda : set_color("jaune"))
+button_del = Button(window, image=img_del, bg="#b97a57", activebackground="#b97a57",highlightthickness = 0, bd = 0, command=lambda : set_color("del"))
+
+button_vert.place(x=606, y=0)
+button_bleu.place(x=606, y=71)
+button_orange.place(x=606, y=71*2)
+button_gris.place(x=606, y=71*3)
+button_rouge.place(x=606, y=71*4)
+button_violet.place(x=606, y=71*5)
+button_jaune.place(x=606, y=71*6)
+button_blanc.place(x=606, y=71*7)
+button_del.place(x=606, y=71*8)
 
 window.mainloop()
