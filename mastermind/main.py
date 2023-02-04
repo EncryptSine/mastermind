@@ -1,5 +1,7 @@
 from tkinter import *
+from tkinter import messagebox
 import os
+import random
 
 window = Tk()
 
@@ -40,55 +42,91 @@ nb_color_in_line = 0
 
 list_actual_color = []
 
+color_check = []
+
+color = ["vert", "bleu", "orange", "gris", "rouge", "violet", "blanc", "jaune"]
+
+color_suit = random.sample(color, 4)
+
+print(color_suit)
+
 
 def set_color(color):
     global nb_color_in_line
+    global nb_tentative
+    if (color == "valider"):
+        if (nb_color_in_line != 4):
+            messagebox.showerror("Erreur de jeu", "4 couleurs sont nécessaires pour valider la ligne !\n"
+                                                  "Vous devez choisir 4 couleurs.\n")
+            return False
+        nb_tentative += 1
+        nb_color_in_line = 0
+        list_actual_color.clear()
+        if (color_check == color_suit):
+            print("GAGNE")
+            color_check.clear()
+            return
+        else: 
+            print("FAUX")
+            color_check.clear()
+            return
     if (color == "del"):
         for element in list_actual_color:
             element.after(5, element.destroy())
         list_actual_color.clear()
+        color_check.clear()
         nb_color_in_line = 0
-        print(nb_color_in_line)
         return
-    if(nb_color_in_line == 4):
-        print("TROP DE COULEURS CHOISIT FAUT FAIRE UN MESSAGE DERREUR")
+    if (nb_color_in_line == 4):
+        messagebox.showerror("Erreur de jeu", "Trop de couleur choisit !\nVous ne pouvez choisir que 4 couleurs par "
+                                              "ligne maximum.\nPour changer la combinaison appuyer sur le boutton "
+                                              "SUPPRIMER ")
         return False
     if (color == "vert"):
         actual_color = Label(window, image=img_vert, bg="red", highlightthickness=0, bd=0)
-        actual_color.place(x=0, y=71 * nb_tentative)
+        actual_color.place(x=20 + 85 * nb_color_in_line, y=2 + 71 * nb_tentative)
         list_actual_color.append(actual_color)
+        color_check.append("vert")
     if (color == "bleu"):
         actual_color = Label(window, image=img_bleu, bg="red", highlightthickness=0, bd=0)
-        actual_color.place(x=0, y=71 * nb_tentative)
+        actual_color.place(x=20 + 85 * nb_color_in_line, y=2 + 71 * nb_tentative)
         list_actual_color.append(actual_color)
+        color_check.append("bleu")
     if (color == "orange"):
         actual_color = Label(window, image=img_orange, bg="red", highlightthickness=0, bd=0)
-        actual_color.place(x=0, y=71 * nb_tentative)
+        actual_color.place(x=20 + 85 * nb_color_in_line, y=2 + 71 * nb_tentative)
         list_actual_color.append(actual_color)
+        color_check.append("orange")
     if (color == "gris"):
         actual_color = Label(window, image=img_gris, bg="red", highlightthickness=0, bd=0)
-        actual_color.place(x=0, y=71 * nb_tentative)
+        actual_color.place(x=20 + 85 * nb_color_in_line, y=2 + 71 * nb_tentative)
         list_actual_color.append(actual_color)
+        color_check.append("gris")
     if (color == "rouge"):
         actual_color = Label(window, image=img_rouge, bg="red", highlightthickness=0, bd=0)
-        actual_color.place(x=0, y=71 * nb_tentative)
+        actual_color.place(x=20 + 85 * nb_color_in_line, y=2 + 71 * nb_tentative)
         list_actual_color.append(actual_color)
+        color_check.append("rouge")
     if (color == "violet"):
         actual_color = Label(window, image=img_violet, bg="red", highlightthickness=0, bd=0)
-        actual_color.place(x=0, y=71 * nb_tentative)
+        actual_color.place(x=20 + 85 * nb_color_in_line, y=2 + 71 * nb_tentative)
         list_actual_color.append(actual_color)
+        color_check.append("violet")
     if (color == "blanc"):
         actual_color = Label(window, image=img_blanc, bg="red", highlightthickness=0, bd=0)
-        actual_color.place(x=0, y=71 * nb_tentative)
+        actual_color.place(x=20 + 85 * nb_color_in_line, y=2 + 71 * nb_tentative)
         list_actual_color.append(actual_color)
+        color_check.append("blanc")
     if (color == "jaune"):
         actual_color = Label(window, image=img_jaune, bg="red", highlightthickness=0, bd=0)
-        actual_color.place(x=0, y=71 * nb_tentative)
+        actual_color.place(x=20 + 85 * nb_color_in_line, y=2 + 71 * nb_tentative)
         list_actual_color.append(actual_color)
+        color_check.append("jaune")
     nb_color_in_line += 1
-
-    print(nb_color_in_line)
-
+    
+    print(color_check)
+    
+    return True
 
 img_vert = PhotoImage(file=ABSOLUTE_PATH + "vert.png")
 img_bleu = PhotoImage(file=ABSOLUTE_PATH + "bleu.png")
@@ -99,34 +137,32 @@ img_violet = PhotoImage(file=ABSOLUTE_PATH + "violet.png")
 img_blanc = PhotoImage(file=ABSOLUTE_PATH + "blanc.png")
 img_jaune = PhotoImage(file=ABSOLUTE_PATH + "jaune.png")
 img_del = PhotoImage(file=ABSOLUTE_PATH + "button_delet.png")
+img_valider = PhotoImage(file=ABSOLUTE_PATH + "valider.png")
 
-button_vert = Button(window, image=img_vert, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+button_1 = Button(window, image=img_vert, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                      command=lambda: set_color("vert"))
-button_bleu = Button(window, image=img_bleu, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+button_2 = Button(window, image=img_bleu, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                      command=lambda: set_color("bleu"))
-button_orange = Button(window, image=img_orange, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+button_3 = Button(window, image=img_orange, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                        command=lambda: set_color("orange"))
-button_gris = Button(window, image=img_gris, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+button_4 = Button(window, image=img_gris, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                      command=lambda: set_color("gris"))
-button_rouge = Button(window, image=img_rouge, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+button_5 = Button(window, image=img_rouge, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                       command=lambda: set_color("rouge"))
-button_violet = Button(window, image=img_violet, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+button_6 = Button(window, image=img_violet, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                        command=lambda: set_color("violet"))
-button_blanc = Button(window, image=img_blanc, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+button_7 = Button(window, image=img_blanc, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                       command=lambda: set_color("blanc"))
-button_jaune = Button(window, image=img_jaune, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+button_8 = Button(window, image=img_jaune, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                       command=lambda: set_color("jaune"))
 button_del = Button(window, image=img_del, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                     command=lambda: set_color("del"))
+button_valider = Button(window, image=img_valider, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+                    command=lambda: set_color("valider"))
 
-button_vert.place(x=606, y=0)
-button_bleu.place(x=606, y=71)
-button_orange.place(x=606, y=71 * 2)
-button_gris.place(x=606, y=71 * 3)
-button_rouge.place(x=606, y=71 * 4)
-button_violet.place(x=606, y=71 * 5)
-button_jaune.place(x=606, y=71 * 6)
-button_blanc.place(x=606, y=71 * 7)
+for i in range(8):
+    eval("button_" + str(i + 1) + ".place(x=606, y=71 * " + str(i) + ")")
 button_del.place(x=606, y=71 * 8)
+button_valider.place(x=606, y=71 * 9)
 
 window.mainloop()
