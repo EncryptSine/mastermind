@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 import os
+import random
 
 window = Tk()
 
@@ -43,7 +44,11 @@ list_actual_color = []
 
 color_check = []
 
-color_suit = ["vert", "bleu", "orange", "violet"]
+color = ["vert", "bleu", "orange", "gris", "rouge", "violet", "blanc", "jaune"]
+
+color_suit = random.sample(color, 4)
+
+print(color_suit)
 
 
 def set_color(color):
@@ -114,8 +119,10 @@ def set_color(color):
         list_actual_color.append(actual_color)
         color_check.append("jaune")
     nb_color_in_line += 1
+    
+    print(color_check)
+    
     return True
-
 
 img_vert = PhotoImage(file=ABSOLUTE_PATH + "vert.png")
 img_bleu = PhotoImage(file=ABSOLUTE_PATH + "bleu.png")
@@ -151,7 +158,7 @@ button_valider = Button(window, image=img_valider, bg="#b97a57", activebackgroun
 
 for i in range(8):
     eval("button_" + str(i + 1) + ".place(x=606, y=71 * " + str(i) + ")")
-    button_del.place(x=606, y=71 * 8)
-    button_valider.place(x=606, y=71 * 9)
+button_del.place(x=606, y=71 * 8)
+button_valider.place(x=606, y=71 * 9)
 
 window.mainloop()
