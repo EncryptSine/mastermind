@@ -125,8 +125,24 @@ def set_color(color):
     nb_color_in_line += 1
     
     print(color_check)
-    
+    common_elements, same_position = count_common_elements(color_suit, color_check)
+    print(f"Il y a {common_elements} éléments en commun entre les deux listes")
+    print(f"{same_position} éléments se trouvent aux mêmes positions dans les deux listes")
     return True
+
+
+def count_common_elements(list1, list2):
+    count = 0
+    same_position = 0
+    for i in range(len(list1)):
+        for j in range(len(list2)):
+            if list1[i] == list2[j] and i != j:
+                count += 1
+                break
+            elif list1[i] == list2[j] and i == j:
+                same_position += 1
+                break
+    return count, same_position
 
 img_vert = PhotoImage(file=ABSOLUTE_PATH + "vert.png")
 img_bleu = PhotoImage(file=ABSOLUTE_PATH + "bleu.png")
