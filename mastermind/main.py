@@ -128,36 +128,30 @@ img_jaune = PhotoImage(file=ABSOLUTE_PATH + "jaune.png")
 img_del = PhotoImage(file=ABSOLUTE_PATH + "button_delet.png")
 img_valider = PhotoImage(file=ABSOLUTE_PATH + "valider.png")
 
-button_vert = Button(window, image=img_vert, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+button_1 = Button(window, image=img_vert, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                      command=lambda: set_color("vert"))
-button_bleu = Button(window, image=img_bleu, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+button_2 = Button(window, image=img_bleu, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                      command=lambda: set_color("bleu"))
-button_orange = Button(window, image=img_orange, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+button_3 = Button(window, image=img_orange, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                        command=lambda: set_color("orange"))
-button_gris = Button(window, image=img_gris, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+button_4 = Button(window, image=img_gris, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                      command=lambda: set_color("gris"))
-button_rouge = Button(window, image=img_rouge, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+button_5 = Button(window, image=img_rouge, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                       command=lambda: set_color("rouge"))
-button_violet = Button(window, image=img_violet, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+button_6 = Button(window, image=img_violet, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                        command=lambda: set_color("violet"))
-button_blanc = Button(window, image=img_blanc, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+button_7 = Button(window, image=img_blanc, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                       command=lambda: set_color("blanc"))
-button_jaune = Button(window, image=img_jaune, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+button_8 = Button(window, image=img_jaune, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                       command=lambda: set_color("jaune"))
 button_del = Button(window, image=img_del, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                     command=lambda: set_color("del"))
 button_valider = Button(window, image=img_valider, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
-                        command=lambda: set_color("valider"))
+                    command=lambda: set_color("valider"))
 
-button_vert.place(x=606, y=0)
-button_bleu.place(x=606, y=71)
-button_orange.place(x=606, y=71 * 2)
-button_gris.place(x=606, y=71 * 3)
-button_rouge.place(x=606, y=71 * 4)
-button_violet.place(x=606, y=71 * 5)
-button_jaune.place(x=606, y=71 * 6)
-button_blanc.place(x=606, y=71 * 7)
-button_del.place(x=606, y=71 * 8)
-button_valider.place(x=606, y=71 * 9)
+for i in range(8):
+    eval("button_" + str(i + 1) + ".place(x=606, y=71 * " + str(i) + ")")
+    button_del.place(x=606, y=71 * 8)
+    button_valider.place(x=606, y=71 * 9)
 
 window.mainloop()
