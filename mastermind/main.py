@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import os
 import random
+from test import count_common_elements 
 
 window = Tk()
 
@@ -64,8 +65,24 @@ def set_color(color):
         list_actual_color.clear()
         if (color_check == color_suit):
             print("GAGNE")
-        color_check.clear()
-        return
+            color_check.clear()
+            return
+        else: 
+            print("FAUX")
+            common_elements, same_position = count_common_elements(color_suit, color_check)
+            print(f"Il y a {common_elements} éléments en commun entre les deux listes")
+            print(f"{same_position} éléments se trouvent aux mêmes positions dans les deux listes")
+            color_check.clear()
+            f=0
+            e=0
+            while f < common_elements:
+                print("pion noir")
+                f += 1
+            while e < same_position:
+                print("pion blanc")
+                e += 1
+            
+            return
     if (color == "del"):
         for element in list_actual_color:
             element.after(5, element.destroy())
@@ -121,7 +138,6 @@ def set_color(color):
     nb_color_in_line += 1
     
     print(color_check)
-    
     return True
 
 img_vert = PhotoImage(file=ABSOLUTE_PATH + "vert.png")
