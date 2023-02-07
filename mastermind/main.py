@@ -1,8 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
 import os
-import random
-from test import count_common_elements 
 
 window = Tk()
 
@@ -37,7 +35,16 @@ bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 nb_tentative = 0
 nb_color_in_line = 0
 
-# color = #be834f
+img_vert = PhotoImage(file=ABSOLUTE_PATH + "vert.png")
+img_bleu = PhotoImage(file=ABSOLUTE_PATH + "bleu.png")
+img_orange = PhotoImage(file=ABSOLUTE_PATH + "orange.png")
+img_gris = PhotoImage(file=ABSOLUTE_PATH + "gris.png")
+img_rouge = PhotoImage(file=ABSOLUTE_PATH + "rouge.png")
+img_violet = PhotoImage(file=ABSOLUTE_PATH + "violet.png")
+img_blanc = PhotoImage(file=ABSOLUTE_PATH + "blanc.png")
+img_jaune = PhotoImage(file=ABSOLUTE_PATH + "jaune.png")
+img_del = PhotoImage(file=ABSOLUTE_PATH + "button_delet.png")
+img_valider = PhotoImage(file=ABSOLUTE_PATH + "valider.png")
 
 nb_color_in_line = 0
 
@@ -45,11 +52,7 @@ list_actual_color = []
 
 color_check = []
 
-color = ["vert", "bleu", "orange", "gris", "rouge", "violet", "blanc", "jaune"]
-
-color_suit = random.sample(color, 4)
-
-print(color_suit)
+color_suit = ["vert", "bleu", "orange", "violet"]
 
 
 def set_color(color):
@@ -65,24 +68,8 @@ def set_color(color):
         list_actual_color.clear()
         if (color_check == color_suit):
             print("GAGNE")
-            color_check.clear()
-            return
-        else: 
-            print("FAUX")
-            common_elements, same_position = count_common_elements(color_suit, color_check)
-            print(f"Il y a {common_elements} éléments en commun entre les deux listes")
-            print(f"{same_position} éléments se trouvent aux mêmes positions dans les deux listes")
-            color_check.clear()
-            f=0
-            e=0
-            while f < common_elements:
-                print("pion noir")
-                f += 1
-            while e < same_position:
-                print("pion blanc")
-                e += 1
-            
-            return
+        color_check.clear()
+        return
     if (color == "del"):
         for element in list_actual_color:
             element.after(5, element.destroy())
@@ -136,45 +123,46 @@ def set_color(color):
         list_actual_color.append(actual_color)
         color_check.append("jaune")
     nb_color_in_line += 1
-    
-    print(color_check)
     return True
 
-img_vert = PhotoImage(file=ABSOLUTE_PATH + "vert.png")
-img_bleu = PhotoImage(file=ABSOLUTE_PATH + "bleu.png")
-img_orange = PhotoImage(file=ABSOLUTE_PATH + "orange.png")
-img_gris = PhotoImage(file=ABSOLUTE_PATH + "gris.png")
-img_rouge = PhotoImage(file=ABSOLUTE_PATH + "rouge.png")
-img_violet = PhotoImage(file=ABSOLUTE_PATH + "violet.png")
-img_blanc = PhotoImage(file=ABSOLUTE_PATH + "blanc.png")
-img_jaune = PhotoImage(file=ABSOLUTE_PATH + "jaune.png")
-img_del = PhotoImage(file=ABSOLUTE_PATH + "button_delet.png")
-img_valider = PhotoImage(file=ABSOLUTE_PATH + "valider.png")
+def init():
+    global img_del, img_vert, img_blanc, img_orange, img_violet, img_bleu, img_gris, img_jaune, img_rouge, img_valider
+    button_vert = Button(window, image=img_vert, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+                         command=lambda: set_color("vert"))
+    button_bleu = Button(window, image=img_bleu, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+                         command=lambda: set_color("bleu"))
+    button_orange = Button(window, image=img_orange, bg="#b97a57", activebackground="#b97a57", highlightthickness=0,
+                           bd=0,
+                           command=lambda: set_color("orange"))
+    button_gris = Button(window, image=img_gris, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+                         command=lambda: set_color("gris"))
+    button_rouge = Button(window, image=img_rouge, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+                          command=lambda: set_color("rouge"))
+    button_violet = Button(window, image=img_violet, bg="#b97a57", activebackground="#b97a57", highlightthickness=0,
+                           bd=0,
+                           command=lambda: set_color("violet"))
+    button_blanc = Button(window, image=img_blanc, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+                          command=lambda: set_color("blanc"))
+    button_jaune = Button(window, image=img_jaune, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+                          command=lambda: set_color("jaune"))
+    button_del = Button(window, image=img_del, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
+                        command=lambda: set_color("del"))
+    button_valider = Button(window, image=img_valider, bg="#b97a57", activebackground="#b97a57", highlightthickness=0,
+                            bd=0,
+                            command=lambda: set_color("valider"))
 
-button_1 = Button(window, image=img_vert, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
-                     command=lambda: set_color("vert"))
-button_2 = Button(window, image=img_bleu, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
-                     command=lambda: set_color("bleu"))
-button_3 = Button(window, image=img_orange, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
-                       command=lambda: set_color("orange"))
-button_4 = Button(window, image=img_gris, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
-                     command=lambda: set_color("gris"))
-button_5 = Button(window, image=img_rouge, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
-                      command=lambda: set_color("rouge"))
-button_6 = Button(window, image=img_violet, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
-                       command=lambda: set_color("violet"))
-button_7 = Button(window, image=img_blanc, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
-                      command=lambda: set_color("blanc"))
-button_8 = Button(window, image=img_jaune, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
-                      command=lambda: set_color("jaune"))
-button_del = Button(window, image=img_del, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
-                    command=lambda: set_color("del"))
-button_valider = Button(window, image=img_valider, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
-                    command=lambda: set_color("valider"))
+    button_vert.place(x=606, y=0)
+    button_bleu.place(x=606, y=71)
+    button_orange.place(x=606, y=71 * 2)
+    button_gris.place(x=606, y=71 * 3)
+    button_rouge.place(x=606, y=71 * 4)
+    button_violet.place(x=606, y=71 * 5)
+    button_jaune.place(x=606, y=71 * 6)
+    button_blanc.place(x=606, y=71 * 7)
+    button_del.place(x=606, y=71 * 8)
+    button_valider.place(x=606, y=71 * 9)
 
-for i in range(8):
-    eval("button_" + str(i + 1) + ".place(x=606, y=71 * " + str(i) + ")")
-button_del.place(x=606, y=71 * 8)
-button_valider.place(x=606, y=71 * 9)
+
+init()
 
 window.mainloop()
