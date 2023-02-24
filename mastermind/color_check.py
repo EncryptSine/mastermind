@@ -1,5 +1,4 @@
 def count_common_elements(main_list, list2):
-    print(main_list, "salut", list2)
     code = main_list.copy()
     """
     out : dico avec 1 si element sont les mêmes et 0 si différents pour emplacement respectifs
@@ -21,7 +20,6 @@ def count_common_elements(main_list, list2):
                 code[i] = "*"
                 list2[j] = "*" 
                 break
-    print(code, list2)
 
     for i in range(len(code)):
         for j in range(len(list2)):
@@ -29,7 +27,6 @@ def count_common_elements(main_list, list2):
                 if code[i] != "*" and list2[j] != "*":
                     same_place_dico[j] = 2
                     break
-    print(same_place_dico)
     return same_place_dico
 
 
