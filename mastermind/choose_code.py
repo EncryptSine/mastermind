@@ -129,6 +129,26 @@ def init(color, window):
     return
 
 def create_popup_window(window):
+    '''
+    Initialise la fenêtre secondaire enfant de la fenêtre principale
+
+    PARAMETRES:
+    ------------------
+    window : instance de Tk()
+                fenêtre principale dont la secondaire va dépendre
+
+    SORTIE:
+    --------
+    Rien : les éléments sont placés dans la fenêtre et celle ci est lancée.
+
+    PRECONDITION:
+    ------------------
+    Instance de Tk() fonctionnelle
+    
+    POSTCONDITION:
+    ------------------
+    Rien
+    '''
 
     import imports
 

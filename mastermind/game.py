@@ -18,6 +18,29 @@ color_check = []
 first_sequence = True
 
 def set_result(dico, canva):
+    '''
+    Place les pions dans le canva en fonction du dictionaire fourni
+
+    PARAMETRES:
+    ------------------
+    dico : dictionnaire
+                    dico de 4 élements
+    canva : tkinter Canvas
+                canva dans lequel afficher les éléments
+
+    SORTIE:
+    --------
+    Rien
+
+    PRECONDITION:
+    ------------------
+    Le dictionaire dico doit contenir 4 éléments ni plus ni moins avec comme unique valeurs 0 / 1 / 2
+    Sinon erreur
+        
+    POSTCONDITION:
+    ------------------
+    Si une valeur est égal à 0 dans le dictionaire aucun pion ne sera afficher
+    '''
     import imports
 
     for j in range(len(dico)):

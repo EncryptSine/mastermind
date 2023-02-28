@@ -3,6 +3,26 @@ from tkinter import Tk
 
 
 def window_init(window):
+    '''
+    Initialise la fenêtre principale
+
+    PARAMETRES:
+    ------------------
+    window : instance de Tk()
+                window dans laquelle afficher les éléments
+
+    SORTIE:
+    --------
+    Rien : les éléments sont placés dans la fenêtre et celle ci est lancée.
+
+    PRECONDITION:
+    ------------------
+    Instance de Tk() fonctionnelle
+    
+    POSTCONDITION:
+    ------------------
+    Rien
+    '''
     import imports
     from game import essai, first_sequence
 

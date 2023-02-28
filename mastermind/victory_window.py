@@ -6,6 +6,31 @@ import game
 color_in_line = 0
 
 def set_color(color, window):
+    '''
+    Place les couleurs donné en argument dans la window.
+
+    PARAMETRES:
+    ------------------
+    color : string
+                    argument principal : Choix possible : 
+                    "vert / "bleu" / "orange" / "violet" / "gris" / "jaune" / "blanc" / "rouge"
+    window : instance de Tk()
+                window dans laquelle afficher les éléments
+
+    SORTIE:
+    --------
+    Rien : En fonction de l'argument la couleur est placé.
+    Aucun élément retourné
+
+    PRECONDITION:
+    ------------------
+    String color parmis la liste cité ci dessus sinon la fonction ne fera rien
+    Instance de Tk() fonctionnelle
+    
+    POSTCONDITION:
+    ------------------
+    Rien
+    '''
 
     import imports
 
@@ -38,10 +63,37 @@ def set_color(color, window):
         actual_color.place(x=180 + 85 * color_in_line, y=126)
     color_in_line += 1
     
-    return True
+    return
 
 
 def create_victory_window(window, code, bool):
+    '''
+    Initialise la fenêtre secondaire enfant de la fenêtre principale
+
+    PARAMETRES:
+    ------------------
+    window : instance de Tk()
+                fenêtre principale dont la secondaire va dépendre
+    code : liste
+                liste de string de 4 éléments contenant les couleurs du code secret 
+                couleur possible : "jaune" / "violet" / "orange" / "blanc" / "gris" / "rouge" / "bleu" / "vert"
+    bool = bool
+                Booléen (True / False)
+
+    SORTIE:
+    --------
+    new_window : la fenêtre créée avec les éléments placés dessus
+
+    PRECONDITION:
+    ------------------
+    Instance de Tk() fonctionnelle
+    Liste de 4 éléments pas plus ni moins
+    
+    POSTCONDITION:
+    ------------------
+    Si bool = True : La version victoire apparait
+    Si bool = False : la version défaite apparait
+    '''
 
     import imports
 
