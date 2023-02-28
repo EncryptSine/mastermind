@@ -5,7 +5,6 @@ from tkinter import Tk
 from tkinter import Canvas
 from tkinter import Toplevel
 from tkinter import Button
-from ahk import AHK
 
 nb_color_in_line = 0
 
