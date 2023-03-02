@@ -87,7 +87,7 @@ def window_init(window):
     button_blanc.place(x=606, y=71 * 7)
     button_del.place(x=606, y=71 * 8)
     button_valider.place(x=606, y=71 * 9)
-    button_reset.place(x=606, y=71 * 10)
+    button_reset.place(x=606, y=71 * 11)
 
     window.mainloop()
 

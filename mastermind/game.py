@@ -114,13 +114,13 @@ def essai(color, canva, window):
         return True
     if (color == "valider"):
         #appel de la fonction test pour comparer les listes
-        result = test(secret_code, color_check)
         if (nb_color_in_line != 4):
             #si il n'y a pas 4 couleurs choisit --> popup erreur
             messagebox.showerror("Erreur de jeu", "4 couleurs sont nécessaires pour valider la ligne !\n"
                                                   "Vous devez choisir 4 couleurs.\n")
             return
         #si le nombre de tentative excède 10 --> défaite (ici >= 9 puisque le nombre de tentative est modifié après cet vérification)
+        result = test(secret_code, color_check)
         if(nb_tentative >= 9):
             #appel fonction pour créé la fenêtre de défaite / victoire
             create_victory_window(window, secret_code, False)
@@ -141,11 +141,11 @@ def essai(color, canva, window):
             #appel fonction pour placer les pions noirs et bancs grâce au dico retourné par la fonction test
             set_result(result, canva)
             nb_tentative += 1
-        #clear des varibales + des listes des valeurs actuelles car utilisateur devra en saisir de nouvelles
-        list_actual_color.clear()
-        color_check.clear()
-        nb_color_in_line = 0
-        return
+            #clear des varibales + des listes des valeurs actuelles car utilisateur devra en saisir de nouvelles
+            list_actual_color.clear()
+            color_check.clear()
+            nb_color_in_line = 0
+            return
     if (color == "del"):
         #destroy des éléments du canva 
         for element in list_actual_color:

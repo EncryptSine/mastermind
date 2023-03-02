@@ -85,42 +85,42 @@ def init(color, window):
     #ajout de la couleur et de l'élément actuel dans les listes color_code et list_actual_color
     if (color == "vert"):
         actual_color = Label(window, image=imports.img_vert, bg="#b97a57", highlightthickness=0, bd=0)
-        actual_color.place(x=180 + 85 * color_in_line, y=106)
+        actual_color.place(x=180 + 85 * color_in_line, y=126)
         list_actual_color.append(actual_color)
         color_code.append("vert")
     if (color == "bleu"):
         actual_color = Label(window, image=imports.img_bleu, bg="#b97a57", highlightthickness=0, bd=0)
-        actual_color.place(x=180 + 85 * color_in_line, y=106)
+        actual_color.place(x=180 + 85 * color_in_line, y=126)
         list_actual_color.append(actual_color)
         color_code.append("bleu")
     if (color == "orange"):
         actual_color = Label(window, image=imports.img_orange, bg="#b97a57", highlightthickness=0, bd=0)
-        actual_color.place(x=180 + 85 * color_in_line, y=106)
+        actual_color.place(x=180 + 85 * color_in_line, y=126)
         list_actual_color.append(actual_color)
         color_code.append("orange")
     if (color == "gris"):
         actual_color = Label(window, image=imports.img_gris, bg="#b97a57", highlightthickness=0, bd=0)
-        actual_color.place(x=180 + 85 * color_in_line, y=106)
+        actual_color.place(x=180 + 85 * color_in_line, y=126)
         list_actual_color.append(actual_color)
         color_code.append("gris")
     if (color == "rouge"):
         actual_color = Label(window, image=imports.img_rouge, bg="#b97a57", highlightthickness=0, bd=0)
-        actual_color.place(x=180 + 85 * color_in_line, y=106)
+        actual_color.place(x=180 + 85 * color_in_line, y=126)
         list_actual_color.append(actual_color)
         color_code.append("rouge")
     if (color == "violet"):
         actual_color = Label(window, image=imports.img_violet, bg="#b97a57", highlightthickness=0, bd=0)
-        actual_color.place(x=180 + 85 * color_in_line, y=106)
+        actual_color.place(x=180 + 85 * color_in_line, y=126)
         list_actual_color.append(actual_color)
         color_code.append("violet")
     if (color == "blanc"):
         actual_color = Label(window, image=imports.img_blanc, bg="#b97a57", highlightthickness=0, bd=0)
-        actual_color.place(x=180 + 85 * color_in_line, y=106)
+        actual_color.place(x=180 + 85 * color_in_line, y=126)
         list_actual_color.append(actual_color)
         color_code.append("blanc")
     if (color == "jaune"):
         actual_color = Label(window, image=imports.img_jaune, bg="#b97a57", highlightthickness=0, bd=0)
-        actual_color.place(x=180 + 85 * color_in_line, y=106)
+        actual_color.place(x=180 + 85 * color_in_line, y=126)
         list_actual_color.append(actual_color)
         color_code.append("jaune")
     #ajout 1 à color_in_line puisqu'une couleur a été choisit
@@ -175,9 +175,12 @@ def create_popup_window(window):
     color_in_line = 0
 
     #texte via un Label Tkinter avec personalisation du texte
-    text = Label(new_window, text="Choisissez le code couleur que le détective doit trouver : \n Cliquez sur valider pour confirmer votre choix",
+    text = Label(new_window, text="Choisissez le code couleur que le détective doit trouver : \nCliquez sur valider pour confirmer votre choix",
      bg="#b97a57", fg="#ff1004", cursor="dot", font=("Arial", 15))
     text.pack()
+    text_rule = Label(new_window, text="Un pion noir équivaut à une couleur bien placé\nUn pion blanc équivaut à une couleur mal placé \nRien signifie que la couleur n'est pas présente",
+     bg="#b97a57", fg="#13FF00", cursor="dot", font=("Arial", 13))
+    text_rule.pack()
 
     #création des différents boutons pour choisir les couleurs et ou supprimer / valider
     button_vert = Button(new_window, image=imports.img_vert, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
