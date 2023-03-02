@@ -7,9 +7,3 @@ window = Tk()
 window_init(window)
 
 #pas de test unitaire --> fichier principal lançant le programme grâce à l'instance de Tk()
-
-
-
-
-
-
