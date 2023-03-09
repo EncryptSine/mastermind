@@ -49,7 +49,8 @@ def window_init(window):
     canva = Canvas(window, width=690, height=890, highlightthickness=0)
     canva.pack()
     canva.create_image(345, 450, image=imports.bg_image)
-
+    
+    #création des différents boutons pour choisir les couleurs et ou supprimer / valider
     button_vert = Button(window, image=imports.img_vert, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
                          command=lambda: essai("vert", canva, window))
     button_bleu = Button(window, image=imports.img_bleu, bg="#b97a57", activebackground="#b97a57", highlightthickness=0, bd=0,
@@ -77,6 +78,7 @@ def window_init(window):
                             bd=0,
                             command=lambda: essai("reset", canva, window))
 
+    #fonction pour placer les bouttons sur la fenêtre
     button_vert.place(x=606, y=1.5)
     button_bleu.place(x=606, y=71)
     button_orange.place(x=606, y=71 * 2)
